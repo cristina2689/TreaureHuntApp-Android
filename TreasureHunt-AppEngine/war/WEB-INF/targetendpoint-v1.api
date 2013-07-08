@@ -1,0 +1,207 @@
+{
+  "extends" : "thirdParty.api",
+  "abstract" : false,
+  "root" : "https://treasurehuntandroid.appspot.com/_ah/api",
+  "name" : "targetendpoint",
+  "version" : "v1",
+  "defaultVersion" : false,
+  "adapter" : {
+    "bns" : "https://treasurehuntandroid.appspot.com/_ah/spi",
+    "deadline" : 10.0,
+    "type" : "lily"
+  },
+  "auth" : {
+    "allowCookieAuth" : false
+  },
+  "frontendLimits" : {
+    "unregisteredUserQps" : -1,
+    "unregisteredQps" : -1,
+    "unregisteredDaily" : -1,
+    "rules" : [ ]
+  },
+  "cacheControl" : {
+    "type" : "no-cache",
+    "maxAge" : 0
+  },
+  "ownerDomain" : "example.com",
+  "ownerName" : "example.com",
+  "packagePath" : "treasurehunt",
+  "methods" : {
+    "targetendpoint.getTarget" : {
+      "path" : "target/{id}",
+      "httpMethod" : "GET",
+      "scopes" : [ ],
+      "audiences" : [ ],
+      "clientIds" : [ ],
+      "rosyMethod" : "com.example.treasurehunt.TargetEndpoint.getTarget",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "string",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "targetendpoint.updateTarget" : {
+      "path" : "target",
+      "httpMethod" : "PUT",
+      "scopes" : [ ],
+      "audiences" : [ ],
+      "clientIds" : [ ],
+      "rosyMethod" : "com.example.treasurehunt.TargetEndpoint.updateTarget",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "targetendpoint.removeTarget" : {
+      "path" : "target/{id}",
+      "httpMethod" : "DELETE",
+      "scopes" : [ ],
+      "audiences" : [ ],
+      "clientIds" : [ ],
+      "rosyMethod" : "com.example.treasurehunt.TargetEndpoint.removeTarget",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "string",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "targetendpoint.insertTarget" : {
+      "path" : "target",
+      "httpMethod" : "POST",
+      "scopes" : [ ],
+      "audiences" : [ ],
+      "clientIds" : [ ],
+      "rosyMethod" : "com.example.treasurehunt.TargetEndpoint.insertTarget",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "targetendpoint.listTarget" : {
+      "path" : "target",
+      "httpMethod" : "GET",
+      "scopes" : [ ],
+      "audiences" : [ ],
+      "clientIds" : [ ],
+      "rosyMethod" : "com.example.treasurehunt.TargetEndpoint.listTarget",
+      "request" : {
+        "parameters" : {
+          "cursor" : {
+            "type" : "string",
+            "required" : false
+          },
+          "limit" : {
+            "type" : "int32",
+            "required" : false
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    }
+  },
+  "descriptor" : {
+    "schemas" : {
+      "Target" : {
+        "id" : "Target",
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string"
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "latitude" : {
+            "type" : "number"
+          },
+          "longitude" : {
+            "type" : "number"
+          },
+          "description" : {
+            "type" : "string"
+          },
+          "question" : {
+            "type" : "string"
+          },
+          "answer" : {
+            "type" : "string"
+          },
+          "image" : {
+            "type" : "string"
+          }
+        }
+      },
+      "CollectionResponse_Target" : {
+        "id" : "CollectionResponse_Target",
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "Target"
+            }
+          },
+          "nextPageToken" : {
+            "type" : "string"
+          }
+        }
+      }
+    },
+    "methods" : {
+      "com.example.treasurehunt.TargetEndpoint.getTarget" : {
+        "response" : {
+          "$ref" : "Target"
+        }
+      },
+      "com.example.treasurehunt.TargetEndpoint.updateTarget" : {
+        "request" : {
+          "$ref" : "Target"
+        },
+        "response" : {
+          "$ref" : "Target"
+        }
+      },
+      "com.example.treasurehunt.TargetEndpoint.removeTarget" : {
+        "response" : {
+          "$ref" : "Target"
+        }
+      },
+      "com.example.treasurehunt.TargetEndpoint.insertTarget" : {
+        "request" : {
+          "$ref" : "Target"
+        },
+        "response" : {
+          "$ref" : "Target"
+        }
+      },
+      "com.example.treasurehunt.TargetEndpoint.listTarget" : {
+        "response" : {
+          "$ref" : "CollectionResponse_Target"
+        }
+      }
+    }
+  }
+}

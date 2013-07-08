@@ -1,0 +1,201 @@
+{
+  "extends" : "thirdParty.api",
+  "abstract" : false,
+  "root" : "https://treasurehuntandroid.appspot.com/_ah/api",
+  "name" : "gameendpoint",
+  "version" : "v1",
+  "defaultVersion" : false,
+  "adapter" : {
+    "bns" : "https://treasurehuntandroid.appspot.com/_ah/spi",
+    "deadline" : 10.0,
+    "type" : "lily"
+  },
+  "auth" : {
+    "allowCookieAuth" : false
+  },
+  "frontendLimits" : {
+    "unregisteredUserQps" : -1,
+    "unregisteredQps" : -1,
+    "unregisteredDaily" : -1,
+    "rules" : [ ]
+  },
+  "cacheControl" : {
+    "type" : "no-cache",
+    "maxAge" : 0
+  },
+  "ownerDomain" : "example.com",
+  "ownerName" : "example.com",
+  "packagePath" : "treasurehunt",
+  "methods" : {
+    "gameendpoint.listGame" : {
+      "path" : "game",
+      "httpMethod" : "GET",
+      "scopes" : [ ],
+      "audiences" : [ ],
+      "clientIds" : [ ],
+      "rosyMethod" : "com.example.treasurehunt.GameEndpoint.listGame",
+      "request" : {
+        "parameters" : {
+          "cursor" : {
+            "type" : "string",
+            "required" : false
+          },
+          "limit" : {
+            "type" : "int32",
+            "required" : false
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "gameendpoint.updateGame" : {
+      "path" : "game",
+      "httpMethod" : "PUT",
+      "scopes" : [ ],
+      "audiences" : [ ],
+      "clientIds" : [ ],
+      "rosyMethod" : "com.example.treasurehunt.GameEndpoint.updateGame",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "gameendpoint.getGame" : {
+      "path" : "game/{id}",
+      "httpMethod" : "GET",
+      "scopes" : [ ],
+      "audiences" : [ ],
+      "clientIds" : [ ],
+      "rosyMethod" : "com.example.treasurehunt.GameEndpoint.getGame",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "string",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "gameendpoint.removeGame" : {
+      "path" : "game/{id}",
+      "httpMethod" : "DELETE",
+      "scopes" : [ ],
+      "audiences" : [ ],
+      "clientIds" : [ ],
+      "rosyMethod" : "com.example.treasurehunt.GameEndpoint.removeGame",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "string",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "gameendpoint.insertGame" : {
+      "path" : "game",
+      "httpMethod" : "POST",
+      "scopes" : [ ],
+      "audiences" : [ ],
+      "clientIds" : [ ],
+      "rosyMethod" : "com.example.treasurehunt.GameEndpoint.insertGame",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    }
+  },
+  "descriptor" : {
+    "schemas" : {
+      "CollectionResponse_Game" : {
+        "id" : "CollectionResponse_Game",
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "Game"
+            }
+          },
+          "nextPageToken" : {
+            "type" : "string"
+          }
+        }
+      },
+      "Game" : {
+        "id" : "Game",
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string"
+          },
+          "date" : {
+            "type" : "string"
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "expirationTime" : {
+            "type" : "integer"
+          },
+          "nrUseri" : {
+            "type" : "integer"
+          },
+          "area" : {
+            "type" : "string"
+          }
+        }
+      }
+    },
+    "methods" : {
+      "com.example.treasurehunt.GameEndpoint.listGame" : {
+        "response" : {
+          "$ref" : "CollectionResponse_Game"
+        }
+      },
+      "com.example.treasurehunt.GameEndpoint.updateGame" : {
+        "request" : {
+          "$ref" : "Game"
+        },
+        "response" : {
+          "$ref" : "Game"
+        }
+      },
+      "com.example.treasurehunt.GameEndpoint.getGame" : {
+        "response" : {
+          "$ref" : "Game"
+        }
+      },
+      "com.example.treasurehunt.GameEndpoint.removeGame" : {
+        "response" : {
+          "$ref" : "Game"
+        }
+      },
+      "com.example.treasurehunt.GameEndpoint.insertGame" : {
+        "request" : {
+          "$ref" : "Game"
+        },
+        "response" : {
+          "$ref" : "Game"
+        }
+      }
+    }
+  }
+}
